@@ -17,11 +17,9 @@ bootstrap approach to background thresholding.
 from py_bg_bootstrap import Bootstrapper
 
 
-bst = Bootstrapper(bg_imgs=parr)
-cuttoff = bst.compute_confidence(threshold=95)
-
-a = Example()
-a.get_value()  # 10
+bst = Bootstrapper(bg_imgs=parr)  # parr is an ndarray of images Z, Y, X order
+cut_off = bst.compute_confidence(threshold=95)  # returns a matrix with the values.
+print(f"cutoff is {cut_off[0, 0]}")
 ```
 
 ## Installation
