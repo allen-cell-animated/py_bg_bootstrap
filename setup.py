@@ -81,7 +81,7 @@ setup(
     test_suite="py_bg_bootstrap/tests",
     tests_require=test_requirements,
     extras_require=extra_requirements,
-    url="https://github.com/allen-animated-cell/py_bg_bootstrap",
+    url="https://github.com/allen-cell-animated/py_bg_bootstrap",
     # Do not edit this string manually, always use bumpversion
     # Details in CONTRIBUTING.rst
     version="0.0.0",
