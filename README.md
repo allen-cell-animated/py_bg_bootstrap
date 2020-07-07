@@ -14,7 +14,11 @@ bootstrap approach to background thresholding.
 
 ## Quick Start
 ```python
-from py_bg_bootstrap import Example
+from py_bg_bootstrap import Bootstrapper
+
+
+bst = Bootstrapper(bg_imgs=parr)
+cuttoff = bst.compute_confidence(threshold=95)
 
 a = Example()
 a.get_value()  # 10
