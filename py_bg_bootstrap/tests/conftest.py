@@ -17,6 +17,7 @@ Docs: https://docs.pytest.org/en/latest/example/simple.html
 """
 
 import json
+import numpy as np
 from pathlib import Path
 from typing import Dict
 
@@ -35,3 +36,12 @@ def data_dir() -> Path:
 def loaded_example_values(data_dir) -> Dict[str, int]:
     with open(data_dir / "example_values.json", "r") as read_in:
         return json.load(read_in)
+
+
+@pytest.fixture
+def poisson_array():
+    seed_lambda = 2.0
+    z_size = 10
+    y_size = 400
+    x_size = 600
+    return np.random.poisson(seed_lambda, (z_size, y_size, x_size))
