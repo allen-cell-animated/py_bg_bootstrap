@@ -11,7 +11,7 @@ import logging
 import sys
 import traceback
 
-from py_bg_bootstrap import Example, get_module_version
+from py_bg_bootstrap import Bootstrapper, get_module_version
 
 ###############################################################################
 
@@ -21,6 +21,8 @@ logging.basicConfig(
 )
 
 ###############################################################################
+
+# *********** this is not a working bin script currently!!!!!
 
 
 class Args(argparse.Namespace):
@@ -75,17 +77,18 @@ class Args(argparse.Namespace):
 
 
 def main():
+    dbg = None
     try:
         args = Args()
         dbg = args.debug
 
         # Do your work here - preferably in a class or function,
         # passing in your args. E.g.
-        exe = Example(args.first)
-        exe.update_value(args.second)
-        print(
-            "First : {}\nSecond: {}".format(exe.get_value(), exe.get_previous_value())
-        )
+        exe = Bootstrapper(args.first)
+        # exe.update_value(args.second)
+        # print(
+        #     "First : {}\nSecond: {}".format(exe.get_value(), exe.get_previous_value())
+        # )
 
     except Exception as e:
         log.error("=============================================")
