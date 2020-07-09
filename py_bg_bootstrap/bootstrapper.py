@@ -1,5 +1,6 @@
-import numpy as np
 from math import floor
+
+import numpy as np
 
 
 class Bootstrapper(object):
@@ -40,7 +41,7 @@ class Bootstrapper(object):
             for y_idx in range(y_size):
                 thresholds[y_idx, x_idx] = self.compute_local_conf(
                     threshold=threshold,
-                    z_ss=(0,z_size),
+                    z_ss=(0, z_size),
                     y_ss=self._y_start_stop[y_idx],
                     x_ss=self._x_start_stop[x_idx]
                 )
@@ -57,10 +58,12 @@ class Bootstrapper(object):
         shape = self._bg_images.shape
         x_len = shape[-1]
         y_len = shape[-2]
-        x_slen = int(floor(x_len/self._divisions))
+        x_slen = int(floor(x_len / self._divisions))
         y_slen = int(floor(y_len / self._divisions))
-        x_start_stop = [(x, min(x+x_slen, x_len)) for x in np.arange(0, x_len, x_slen)]
-        y_start_stop = [(y, min(y+y_slen, y_len)) for y in np.arange(0, y_len, y_slen)]
+        x_start_stop = [(x, min(x + x_slen, x_len)) for x in
+                        np.arange(0, x_len, x_slen)]
+        y_start_stop = [(y, min(y + y_slen, y_len)) for y in
+                        np.arange(0, y_len, y_slen)]
         return x_start_stop, y_start_stop
 
     def mean(self):
