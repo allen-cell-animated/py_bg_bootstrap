@@ -84,7 +84,7 @@ def main():
 
         # Do your work here - preferably in a class or function,
         # passing in your args. E.g.
-        exe = Bootstrapper(args.first)
+        Bootstrapper(args.first)
         # exe.update_value(args.second)
         # print(
         #     "First : {}\nSecond: {}".format(exe.get_value(), exe.get_previous_value())
