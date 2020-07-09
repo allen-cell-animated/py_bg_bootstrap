@@ -19,6 +19,9 @@ class Bootstrapper(object):
         if not Bootstrapper._consistent_shape(bg_imgs):
             raise ValueError("Bootstrapper: bg_imgs have inconsistent shape / "
                              "different sizes.")
+        if len(bg_imgs.shape) != 3:
+            raise ValueError("Bootstrapper: bg_images must be 3D. (D, Y, X) where D is"
+                             " index or Z or T.")
         self._bg_images = bg_imgs
         self._divisions = division
         if self._divisions < 1:
@@ -59,6 +62,12 @@ class Bootstrapper(object):
         x_start_stop = [(x, min(x+x_slen, x_len)) for x in np.arange(0, x_len, x_slen)]
         y_start_stop = [(y, min(y+y_slen, y_len)) for y in np.arange(0, y_len, y_slen)]
         return x_start_stop, y_start_stop
+
+    def mean(self):
+        return np.mean(self._bg_images)
+
+    def variance(self):
+        return np.var(self._bg_images)
 
     @staticmethod
     def _consistent_shape(nparr: np.ndarray) -> bool:
