@@ -18,11 +18,14 @@ class Bootstrapper(object):
         The default is 1.
         """
         if not Bootstrapper._consistent_shape(bg_imgs):
-            raise ValueError("Bootstrapper: bg_imgs have inconsistent shape / "
-                             "different sizes.")
+            raise ValueError(
+                "Bootstrapper: bg_imgs have inconsistent shape / " "different sizes."
+            )
         if len(bg_imgs.shape) != 3:
-            raise ValueError("Bootstrapper: bg_images must be 3D. (D, Y, X) where D is"
-                             " index or Z or T.")
+            raise ValueError(
+                "Bootstrapper: bg_images must be 3D. (D, Y, X) where D is"
+                " index or Z or T."
+            )
         self._bg_images = bg_imgs
         self._divisions = division
         if self._divisions < 1:
@@ -43,16 +46,22 @@ class Bootstrapper(object):
                     threshold=threshold,
                     z_ss=(0, z_size),
                     y_ss=self._y_start_stop[y_idx],
-                    x_ss=self._x_start_stop[x_idx]
+                    x_ss=self._x_start_stop[x_idx],
                 )
         return thresholds
 
     def compute_local_conf(self, threshold: int, z_ss: tuple, y_ss: tuple, x_ss: tuple):
-        return np.percentile([self._bg_images[z, y, x] for (z, y, x) in zip(
-            self._rng.integers(z_ss[0], z_ss[1], size=self._samples),
-            self._rng.integers(y_ss[0], y_ss[1], size=self._samples),
-            self._rng.integers(x_ss[0], x_ss[1], size=self._samples)
-        )], q=threshold)
+        return np.percentile(
+            [
+                self._bg_images[z, y, x]
+                for (z, y, x) in zip(
+                    self._rng.integers(z_ss[0], z_ss[1], size=self._samples),
+                    self._rng.integers(y_ss[0], y_ss[1], size=self._samples),
+                    self._rng.integers(x_ss[0], x_ss[1], size=self._samples),
+                )
+            ],
+            q=threshold,
+        )
 
     def compute_grid(self):
         shape = self._bg_images.shape
@@ -60,10 +69,12 @@ class Bootstrapper(object):
         y_len = shape[-2]
         x_slen = int(floor(x_len / self._divisions))
         y_slen = int(floor(y_len / self._divisions))
-        x_start_stop = [(x, min(x + x_slen, x_len)) for x in
-                        np.arange(0, x_len, x_slen)]
-        y_start_stop = [(y, min(y + y_slen, y_len)) for y in
-                        np.arange(0, y_len, y_slen)]
+        x_start_stop = [
+            (x, min(x + x_slen, x_len)) for x in np.arange(0, x_len, x_slen)
+        ]
+        y_start_stop = [
+            (y, min(y + y_slen, y_len)) for y in np.arange(0, y_len, y_slen)
+        ]
         return x_start_stop, y_start_stop
 
     def mean(self):
