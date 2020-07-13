@@ -14,3 +14,4 @@ def get_module_version():
 
 
 from .bootstrapper import Bootstrapper  # noqa: F401
+from .analyzer import Analyzer  # noqa F401
