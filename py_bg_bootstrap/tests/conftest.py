@@ -45,3 +45,9 @@ def poisson_array():
     y_size = 400
     x_size = 600
     return np.random.poisson(seed_lambda, (z_size, y_size, x_size))
+
+
+@pytest.fixture
+def gaussian_array():
+    rng = np.random.default_rng()
+    return rng.standard_normal(size=10000)
