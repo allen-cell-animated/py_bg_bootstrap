@@ -55,9 +55,9 @@ class Analyzer(object):
 
         Parameters
         ----------
-        alpha (float) is the desired certainty that the data is normally distributed. Smaller
-        alpha means a stronger certainty of normality generally 0.05 is a reasonable
-        value.
+        alpha (float) is the desired certainty that the data is normally distributed.
+        Smaller alpha means a stronger certainty of normality generally 0.05 is a
+        reasonable value.
 
         Returns
         -------
