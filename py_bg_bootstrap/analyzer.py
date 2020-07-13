@@ -18,12 +18,35 @@ class Analyzer(object):
         self._rng = np.random.default_rng()
 
     def compute_confidence(self, threshold: float):
+        """
+        Query the data provided to determine the value that corresponds with the
+        percentage threshold from the data.
+
+        Parameters
+        ----------
+        threshold the percentage value desired. threshold=95.0 would be all but the
+        top 5% of the data.
+
+        Returns
+        -------
+        float value for the requested threshold
+        """
         return np.percentile(self._bg_images, q=threshold)
 
     def mean(self):
+        """
+        Returns
+        -------
+        float that is the mean of the data
+        """
         return np.mean(self._bg_images)
 
     def variance(self):
+        """
+        Returns
+        -------
+        float that is the variance of the data
+        """
         return np.var(self._bg_images)
 
     def shapiro(self, alpha: float = 0.05, please_print: bool = False):
@@ -65,10 +88,11 @@ class Analyzer(object):
         bool (True, False) Return True if Normally distributed.
         """
         # normality test
-        result = anderson(self._bg_images)
+        result = anderson(self._bg_images.flatten())
         if please_print:
             print('Statistic: %.3f' % result.statistic)
         normal = True
+        p = 0
         for i in range(len(result.critical_values)):
             sl, cv = result.significance_level[i], result.critical_values[i]
             normal &= result.statistic < result.critical_values[i]
