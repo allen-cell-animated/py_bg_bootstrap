@@ -39,6 +39,7 @@ dev_requirements = [
 
 requirements = [
     "numpy",
+    "scipy",
 ]
 
 extra_requirements = {
