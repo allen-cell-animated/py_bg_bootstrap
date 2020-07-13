@@ -92,7 +92,6 @@ class Analyzer(object):
         if please_print:
             print("Statistic: %.3f" % result.statistic)
         normal = True
-        p = 0
         for i in range(len(result.critical_values)):
             sl, cv = result.significance_level[i], result.critical_values[i]
             normal &= result.statistic < result.critical_values[i]
