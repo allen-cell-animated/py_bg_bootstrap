@@ -31,7 +31,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest --cov-report xml --cov=py_bg_bootstrap py_bg_bootstrap/tests/
-        codecov -t ${{ secrets.CODECOV_TOKEN }}
+        codecov -t ${{ secrets.JS_CODECOV_TOKEN }}
 
   lint:
     runs-on: ubuntu-latest
