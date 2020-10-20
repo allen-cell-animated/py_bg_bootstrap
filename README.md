@@ -1,7 +1,6 @@
 # py_bg_bootstrap
 
 [![Build Status](https://github.com/allen-cell-animated/py_bg_bootstrap/workflows/Build%20Master/badge.svg)](https://github.com/allen-cell-animated/py_bg_bootstrap/actions)
-[![Documentation](https://github.com/allen-cell-animated/py_bg_bootstrap/workflows/Documentation/badge.svg)](https://allen-cell-animated.github.io/py_bg_bootstrap)
 [![Code Coverage](https://codecov.io/gh/allen-cell-animated/py_bg_bootstrap/branch/master/graph/badge.svg)](https://codecov.io/gh/allen-cell-animated/py_bg_bootstrap)
 
 bootstrap approach to background thresholding.
