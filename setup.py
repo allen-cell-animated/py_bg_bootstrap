@@ -12,6 +12,11 @@ setup_requirements = [
     "pytest-runner>=5.2",
 ]
 
+requirements = [
+    "numpy",
+    "scipy",
+]
+
 test_requirements = [
     "black>=19.10b0",
     "codecov>=2.1.4",
@@ -20,6 +25,7 @@ test_requirements = [
     "pytest>=5.4.3",
     "pytest-cov>=2.9.0",
     "pytest-raises>=0.11",
+    *requirements,
 ]
 
 dev_requirements = [
@@ -37,10 +43,6 @@ dev_requirements = [
     "wheel>=0.34.2",
 ]
 
-requirements = [
-    "numpy",
-    "scipy",
-]
 
 extra_requirements = {
     "setup": setup_requirements,
