@@ -51,17 +51,16 @@ class Bootstrapper(object):
         return thresholds
 
     def compute_local_conf(self, threshold: int, z_ss: tuple, y_ss: tuple, x_ss: tuple):
-        return np.percentile(
-            [
+        arr = [
                 self._bg_images[z, y, x]
                 for (z, y, x) in zip(
                     self._rng.integers(z_ss[0], z_ss[1], size=self._samples),
                     self._rng.integers(y_ss[0], y_ss[1], size=self._samples),
                     self._rng.integers(x_ss[0], x_ss[1], size=self._samples),
-                )
-            ],
-            q=threshold,
-        )
+                ) if self._bg_images[z, y, x] is not np.ma.masked
+            ]
+        val = np.percentile(arr, q=threshold)
+        return val
 
     def compute_grid(self):
         shape = self._bg_images.shape

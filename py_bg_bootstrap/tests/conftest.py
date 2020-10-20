@@ -48,6 +48,14 @@ def poisson_array():
 
 
 @pytest.fixture
+def poisson_masked_array(poisson_array):
+    arr = poisson_array
+    mask = arr == 8
+    masked_arr = np.ma.array(data=arr, mask=mask)
+    return masked_arr
+
+
+@pytest.fixture
 def gaussian_array():
     rng = np.random.default_rng()
     return rng.standard_normal(size=10000)
